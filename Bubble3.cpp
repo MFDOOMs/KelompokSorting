@@ -13,7 +13,7 @@ void printLarik(int larik[], int n) {
     cout << endl;
 }
 
-void bubbleSort3Asc (int larik[], int n) {
+void bubbleSort3Des (int larik[], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++)
             if (larik[i] < larik[j]) tukar(larik[i], larik[j]);
@@ -21,7 +21,7 @@ void bubbleSort3Asc (int larik[], int n) {
     }
 }
 
-void bubbleSort3Des (int larik[], int n) {
+void bubbleSort3Asc (int larik[], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++)
             if (larik[i] > larik[j]) tukar(larik[i], larik[j]);
