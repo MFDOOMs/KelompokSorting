@@ -10,7 +10,7 @@ for(int i=0;i<nS;i++){
 }
 }
 
-void swap(int& x, int& y){
+void tukar(int& x, int& y){
     int temp=x;
     x=y;
     y=temp;
@@ -25,7 +25,7 @@ void SelectionA(int arr[],int nS){
                 posisi=j;
             }
         }
-        swap(arr[i],arr[posisi]);
+        tukar(arr[i],arr[posisi]);
         cout<<"pass ke-"<<pass<<": ";
         for(int k=0;k<nS;k++){
             cout<<arr[k]<<" ";
@@ -44,7 +44,7 @@ void SelectionD(int arr[],int nS){
                 posisi=j;
             }
         }
-        swap(arr[i],arr[posisi]);
+        tukar(arr[i],arr[posisi]);
         cout<<"pass ke-"<<pass<<": ";
         for(int k=0;k<nS;k++){
             cout<<arr[k]<<" ";

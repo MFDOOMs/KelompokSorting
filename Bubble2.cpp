@@ -10,7 +10,7 @@ void insert(int arr[],int& n){
 
 }
 
-void swap(int& x, int& y){
+void tukar(int& x, int& y){
     int temp=x;
     x=y;
     y=temp;
@@ -21,7 +21,7 @@ void bubble2A(int arr[], int n){
     for(int i=0;i<n-1;i++){
         for(int j=n-1;j>i;j--){
             if(arr[j]<arr[j-1]){
-                swap(arr[j],arr[j-1]);
+                tukar(arr[j],arr[j-1]);
                 cout<<"Pass ke-"<<pass<<": ";
                 for(int k =0;k<n;k++){
                 cout<<arr[k]<<" ";
@@ -38,7 +38,7 @@ void bubble2D(int arr[], int n){
     for(int i=0;i<n-1;i++){
         for(int j=n-1;j>i;j--){
             if(arr[j]>arr[j-1]){
-                swap(arr[j],arr[j-1]);
+                tukar(arr[j],arr[j-1]);
                 cout<<"Pass ke-"<<pass<<": ";
                 for(int k =0;k<n;k++){
                 cout<<arr[k]<<" ";

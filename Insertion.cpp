@@ -39,7 +39,7 @@ void insertionAsc(int larik[], int n) {
     }
 }
 
-main() {
+int main() {
     int larik[20];
     int n = 0;
     cin >> n;
