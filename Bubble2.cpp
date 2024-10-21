@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
-void insert(int arr[],int& n){
+void insert(int arr[],int& nB2){
     cout<<"Masukan banyak angka yang ingin di sort : ";
-    cin>>n;
+    cin>>nB2;
     cout<<"Masukan angka : ";
-    for(int i=0;i<n;i++){
+    for(int i=0;i<nB2;i++){
         cin>>arr[i];
     }
 
@@ -16,14 +16,14 @@ void tukar(int& x, int& y){
     y=temp;
 }
 
-void bubble2A(int arr[], int n){
+void bubble2A(int arr[], int nB2){
     int pass=1;
-    for(int i=0;i<n-1;i++){
-        for(int j=n-1;j>i;j--){
+    for(int i=0;i<nB2-1;i++){
+        for(int j=nB2-1;j>i;j--){
             if(arr[j]<arr[j-1]){
                 tukar(arr[j],arr[j-1]);
                 cout<<"Pass ke-"<<pass<<": ";
-                for(int k =0;k<n;k++){
+                for(int k =0;k<nB2;k++){
                 cout<<arr[k]<<" ";
             }
             cout<<endl;
@@ -33,14 +33,14 @@ void bubble2A(int arr[], int n){
     }
 }
 
-void bubble2D(int arr[], int n){
+void bubble2D(int arr[], int nB2){
     int pass=1;
-    for(int i=0;i<n-1;i++){
-        for(int j=n-1;j>i;j--){
+    for(int i=0;i<nB2-1;i++){
+        for(int j=nB2-1;j>i;j--){
             if(arr[j]>arr[j-1]){
                 tukar(arr[j],arr[j-1]);
                 cout<<"Pass ke-"<<pass<<": ";
-                for(int k =0;k<n;k++){
+                for(int k =0;k<nB2;k++){
                 cout<<arr[k]<<" ";
             }
             cout<<endl;
@@ -52,12 +52,12 @@ void bubble2D(int arr[], int n){
 
 int main(int argc, char const *argv[])
 {
-    int n;
-    int* arr = new int[n];
-    insert(arr,n);
-    bubble2A(arr,n);
+    int nB2;
+    int* arr = new int[nB2];
+    insert(arr,nB2);
+    bubble2A(arr,nB2);
     cout<<endl;
-    bubble2D(arr,n);
+    bubble2D(arr,nB2);
     delete[] arr;
     return 0;
 }
