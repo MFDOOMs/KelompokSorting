@@ -13,7 +13,7 @@ void printLarik(int larik[], int n) {
     cout << endl;
 }
 
-void insertionDes(int larik[], int n) {
+void insertionAsc(int larik[], int n) {
     for (int i = 1; i < n; i++)
     {
         for (int j = i - 1; j >= 0; j--)
@@ -26,7 +26,7 @@ void insertionDes(int larik[], int n) {
     }
 }
 
-void insertionAsc(int larik[], int n) {
+void insertionDes(int larik[], int n) {
     for (int i = 1; i < n; i++)
     {
         for (int j = i - 1; j >= 0; j--)
@@ -39,7 +39,7 @@ void insertionAsc(int larik[], int n) {
     }
 }
 
-main() {
+int main() {
     int larik[20];
     int n = 0;
     cin >> n;
