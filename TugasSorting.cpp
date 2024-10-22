@@ -157,12 +157,12 @@ void bubble1Asc(int banyakData, larik kumpulanData) {
     int proses = 1;
     for (int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << proses++ << " : ";
+        cetakLarik(kumpulanData, banyakData);
         for (int j = 0; j < banyakData - 1; j++) {
             if (kumpulanData[j] > kumpulanData[j + 1 ]) {
                 tukar(kumpulanData[j], kumpulanData[j + 1]);
             }
         }
-        cetakLarik(kumpulanData, banyakData);
     }
     cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -172,12 +172,12 @@ void bubble1Des(int banyakData, larik kumpulanData) {
     int proses = 1;
     for (int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << proses++ << " : ";
+        cetakLarik(kumpulanData, banyakData);
         for (int j = 0; j < banyakData - 1; j++) {
             if (kumpulanData[j] < kumpulanData[j + 1 ]) {
                 tukar(kumpulanData[j], kumpulanData[j + 1]);
             }
         }
-        cetakLarik(kumpulanData, banyakData);
     }
     cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -185,14 +185,14 @@ void bubble1Des(int banyakData, larik kumpulanData) {
 
 void bubble2Asc(int banyakData, larik kumpulanData) {
     int proses = 1;
-    for(int i = 0; i < banyakData - 1; i++) {
+    for(int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << proses++ << " : ";
+        cetakLarik(kumpulanData, banyakData);
         for(int j = banyakData - 1; j > i; j--){
             if(kumpulanData[j] < kumpulanData[j - 1]){
                 tukar(kumpulanData[j], kumpulanData[j - 1]);
             }
         }
-        cetakLarik(kumpulanData, banyakData);
     }
     cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -200,14 +200,14 @@ void bubble2Asc(int banyakData, larik kumpulanData) {
 
 void bubble2Des(int banyakData, larik kumpulanData) {
     int proses = 1;
-    for(int i = 0; i < banyakData - 1; i++) {
+    for(int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << proses++ << " : ";
+        cetakLarik(kumpulanData, banyakData);
         for(int j = banyakData - 1; j > i; j--){
             if(kumpulanData[j] > kumpulanData[j - 1]){
                 tukar(kumpulanData[j], kumpulanData[j - 1]);
             }
         }
-        cetakLarik(kumpulanData, banyakData);
     }
     cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -217,9 +217,9 @@ void bubble2Des(int banyakData, larik kumpulanData) {
 void bubble3Asc(int banyakData, larik kumpulanData) {
     for (int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << i + 1 << " : ";
+        cetakLarik(kumpulanData, banyakData);
         for (int j = i + 1; j < banyakData; j++)
             if (kumpulanData[i] > kumpulanData[j]) tukar(kumpulanData[i], kumpulanData[j]);
-        cetakLarik(kumpulanData, banyakData);
     }
     cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -228,16 +228,16 @@ void bubble3Asc(int banyakData, larik kumpulanData) {
 void bubble3Des(int banyakData, larik kumpulanData) {
     for (int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << i + 1 << " : ";
+        cetakLarik(kumpulanData, banyakData);
         for (int j = i + 1; j < banyakData; j++)
             if (kumpulanData[i] < kumpulanData[j]) tukar(kumpulanData[i], kumpulanData[j]);
-        cetakLarik(kumpulanData, banyakData);
     }
     cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
 }
 
 void insertionAsc(int banyakData, larik kumpulanData) {
-    for (int i = 1; i < banyakData; i++) {
+    for (int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << i + 1 << " : ";
         for (int j = i - 1; j >= 0; j--) {
             if (kumpulanData[j] > kumpulanData[j + 1])
@@ -250,13 +250,13 @@ void insertionAsc(int banyakData, larik kumpulanData) {
 }
 
 void insertionDes(int banyakData, larik kumpulanData) {
-    for (int i = 1; i < banyakData; i++) {
+    for (int i = 0; i < banyakData; i++) {
         cout << "Proses ke-" << i + 1 << " : ";
         for (int j = i - 1; j >= 0; j--) {
             if (kumpulanData[j] < kumpulanData[j + 1])
                 tukar(kumpulanData[j], kumpulanData[j + 1]);
         }
-        cetakLarik(kumpulanData, banyakData);
+    cetakLarik(kumpulanData, banyakData);
     }
         cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -266,6 +266,7 @@ void selectionAsc(int banyakData, larik kumpulanData) {
     int posisi = 0;
     for(int i = 0; i < banyakData - 1; i++){
         cout << "Proses ke-" << i + 1 << " : ";
+        cetakLarik(kumpulanData, banyakData);
         posisi = i;
         for(int j = i + 1; j < banyakData; j++){
             if(kumpulanData[posisi] > kumpulanData[j]){
@@ -273,7 +274,6 @@ void selectionAsc(int banyakData, larik kumpulanData) {
             }
         }
         tukar(kumpulanData[i], kumpulanData[posisi]);
-        cetakLarik(kumpulanData, banyakData);
     }
         cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -283,6 +283,7 @@ void selectionDes(int banyakData, larik kumpulanData) {
     int posisi = 0;
     for(int i = 0; i < banyakData - 1; i++){
         cout << "Proses ke-" << i + 1 << " : ";
+        cetakLarik(kumpulanData, banyakData);
         posisi = i;
         for(int j = i + 1; j < banyakData; j++){
             if(kumpulanData[posisi] < kumpulanData[j]) {
@@ -290,7 +291,6 @@ void selectionDes(int banyakData, larik kumpulanData) {
             }
         }
         tukar(kumpulanData[i], kumpulanData[posisi]);
-        cetakLarik(kumpulanData, banyakData);
     }
         cout << "\nData terurut: \n";
     cetakLarik(kumpulanData, banyakData);
@@ -301,12 +301,12 @@ void shellAsc(int banyakData, larik kumpulanData) {
     for (int jarak = banyakData / 2; jarak > 0; jarak /= 2){
         for (int i = jarak; i < banyakData; i++){
             cout << "Proses ke-" << proses++ << " : ";
+            cetakLarik (kumpulanData, banyakData);
             int temp = kumpulanData[i];
             for (j = i; j >= jarak && temp < kumpulanData[j - jarak]; j -= jarak){
                 kumpulanData[j] = kumpulanData[j - jarak];
             }
             kumpulanData[j] = temp;
-            cetakLarik (kumpulanData, banyakData);
         }
     }
         cout << "\nData terurut: \n";
@@ -318,12 +318,13 @@ void shellDes(int banyakData, larik kumpulanData) {
     for (int jarak = banyakData / 2; jarak > 0; jarak /= 2){
         for (int i = jarak; i < banyakData; i++){
             cout << "Proses ke-" << proses++ << " : ";
+            cetakLarik (kumpulanData, banyakData);
             int temp = kumpulanData[i];
             for (j = i; j >= jarak && temp > kumpulanData[j - jarak]; j -= jarak){
                 kumpulanData[j] = kumpulanData[j - jarak];
             }
             kumpulanData[j] = temp;
-            cetakLarik (kumpulanData, banyakData);
+
         }
     }
         cout << "\nData terurut: \n";
