@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 typedef int array[50];
-void insert(int arr[],int& nB2){
+void insert(array arr,int& nB2){
     cout<<"Masukan banyak angka yang ingin di sort : ";
     cin>>nB2;
     cout<<"Masukan angka : ";
@@ -17,37 +17,29 @@ void tukar(int& x, int& y){
     y=temp;
 }
 
+void print(array arr, int nB2) {
+    for (int i = 0; i < nB2; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
 
-
-void bubble2A(int arr[], int nB2){
-    int pass=1;
+void bubble2A(array arr, int nB2){
     for(int i=0;i<nB2-1;i++){
         for(int j=nB2-1;j>i;j--){
             if(arr[j]<arr[j-1]){
                 tukar(arr[j],arr[j-1]);
-                cout<<"Pass ke-"<<pass<<": ";
-                for(int k =0;k<nB2;k++){
-                cout<<arr[k]<<" ";
-            }
-            cout<<endl;
-            pass++;
+                print(arr,nB2);
             }
         }
     }
 }
 
-void bubble2D(int arr[], int nB2){
-    int pass=1;
+void bubble2D(array arr, int nB2){
     for(int i=0;i<nB2-1;i++){
         for(int j=nB2-1;j>i;j--){
             if(arr[j]>arr[j-1]){
                 tukar(arr[j],arr[j-1]);
-                cout<<"Pass ke-"<<pass<<": ";
-                for(int k =0;k<nB2;k++){
-                cout<<arr[k]<<" ";
-            }
-            cout<<endl;
-            pass++;
+                print(arr,nB2);
             }
         }
     }

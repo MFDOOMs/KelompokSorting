@@ -2,7 +2,7 @@
 using namespace std;
 typedef int array[50];
 
-void insert(int arr[],int& nS){
+void insert(array arr,int& nS){
 cout<<"Masukan Banyak angka yang ingin di sort : ";
 cin>>nS;
 cout<<" Masukan angka : ";
@@ -17,8 +17,14 @@ void tukar(int& x, int& y){
     y=temp;
 }
 
-void SelectionA(int arr[],int nS){
-    int pass=1,posisi;
+void print(array arr, int nS) {
+    for (int i = 0; i < nS; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+void SelectionA(array arr,int nS){
+    int posisi;
     for(int i=0;i<nS-1;i++){
         posisi=i;
         for(int j=i+1;j<nS;j++){
@@ -27,17 +33,12 @@ void SelectionA(int arr[],int nS){
             }
         }
         tukar(arr[i],arr[posisi]);
-        cout<<"pass ke-"<<pass<<": ";
-        for(int k=0;k<nS;k++){
-            cout<<arr[k]<<" ";
-        }
-        cout<<endl;
-        pass++;
+        print(arr,nS);
     }
 }
 
-void SelectionD(int arr[],int nS){
-    int pass=1,posisi;
+void SelectionD(array arr,int nS){
+    int posisi;
     for(int i=0;i<nS-1;i++){
         posisi=i;
         for(int j=i+1;j<nS;j++){
@@ -46,12 +47,7 @@ void SelectionD(int arr[],int nS){
             }
         }
         tukar(arr[i],arr[posisi]);
-        cout<<"pass ke-"<<pass<<": ";
-        for(int k=0;k<nS;k++){
-            cout<<arr[k]<<" ";
-        }
-        cout<<endl;
-        pass++;
+        print(arr,nS);
     }
 }
 
