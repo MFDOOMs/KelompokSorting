@@ -7,7 +7,7 @@ void tukar(int& x, int& y) {
     x = temp;
 }
 
-void printLarik(int larik[], int n) {
+void cetakLarik(int larik[], int n) {
     for (int i = 0; i < n; i++)
         cout << larik[i] << " ";
     cout << endl;
@@ -17,7 +17,7 @@ void bubbleSort3Des (int larik[], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++)
             if (larik[i] < larik[j]) tukar(larik[i], larik[j]);
-        printLarik(larik, n);
+        cetakLarik(larik, n);
     }
 }
 
@@ -25,7 +25,7 @@ void bubbleSort3Asc (int larik[], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = i + 1; j < n; j++)
             if (larik[i] > larik[j]) tukar(larik[i], larik[j]);
-        printLarik(larik, n);
+        cetakLarik(larik, n);
     }
 }
 

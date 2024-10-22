@@ -2,7 +2,7 @@
 using namespace std;
 typedef int larik[100];
 
-void printLarik (larik a, int n){
+void cetakLarik (larik a, int n){
     for (int i=0; i<n; i++){
         cout << a[i] << " ";
     }
@@ -17,7 +17,7 @@ void shellSortA (larik &a, int n){
                 a[j] = a[j-jarak];
             }
             a[j]=temp;
-            printLarik (a,n);
+            cetakLarik (a,n);
             cout << "\n";
         }
     }
@@ -32,7 +32,7 @@ void shellSortD (larik &a, int n){
                 a[j] = a[j-jarak];
             }
             a[j]=temp;
-            printLarik (a,n);
+            cetakLarik (a,n);
             cout << "\n";
         }
     }

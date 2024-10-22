@@ -7,7 +7,7 @@ void tukar(int& x, int& y) {
     x = temp;
 }
 
-void printLarik(int larik[], int n) {
+void cetakLarik(int larik[], int n) {
     for (int i = 0; i < n; i++)
         cout << larik[i] << " ";
     cout << endl;
@@ -22,7 +22,7 @@ void insertionAsc(int larik[], int n) {
                 tukar(larik[j], larik[j + 1]);
             }
         }
-        printLarik(larik, n);
+        cetakLarik(larik, n);
     }
 }
 
@@ -35,7 +35,7 @@ void insertionDes(int larik[], int n) {
                 tukar(larik[j], larik[j + 1]);
             }
         }
-        printLarik(larik, n);
+        cetakLarik(larik, n);
     }
 }
 
