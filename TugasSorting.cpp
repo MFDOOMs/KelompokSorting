@@ -50,7 +50,7 @@ void shellDes(int banyakData, larik kumpulanData);
 
 
 // Utama
-int main(int argc, char const *argv[])
+int main()
 {
     int banyakData = inputBanyakData(banyakData);
 
@@ -80,9 +80,9 @@ int inputBanyakData(int banyakData) {
 
 
 void menu(int banyakData, larik kumpulanData) {
-    int urutan = 0;
-    int algoritma = 0;
-    
+    int urutan = 0, algoritma = 0;
+    string lanjut = "";
+
     cout << "\nPilih bagaimana urutan data akan disortir : \n";
     cout << "1. Ascending   (dari paling kecil) \n";
     cout << "2. Descending  (dari paling besar) \n";
@@ -99,7 +99,7 @@ void menu(int banyakData, larik kumpulanData) {
     cout << "5. Insertion Sort          \n";
     cout << "6. Shell Sort              \n";
     do {
-    cout << "Masukkan pilihan (1 - 2) : ";
+    cout << "Masukkan pilihan : ";
     cin >> algoritma;
     } while (algoritma < 1 || algoritma > 6);
 
@@ -130,6 +130,13 @@ void menu(int banyakData, larik kumpulanData) {
         }
         break;
     }
+
+    do {
+        cout << "Apakah anda ingin mengurutkan data lagi? (Ya/Tidak) \n";
+        cin >> lanjut;
+    } while (lanjut != "Ya" && lanjut != "ya" && lanjut != "Tidak" && lanjut != "tidak");
+    if (lanjut == "Ya" || lanjut == "ya")
+        main();
 }
 
 void tukar(int& x, int& y) {
@@ -267,10 +274,10 @@ void selectionDes(int banyakData, larik kumpulanData) {
 }
 
 void shellAsc(int banyakData, larik kumpulanData) {
-    int j = 0;
+    int j = 0, proses = 1;
     for (int jarak = banyakData / 2; jarak > 0; jarak /= 2){
         for (int i = jarak; i < banyakData; i++){
-            cout << "Proses ke-" << i + 1 << " : ";
+            cout << "Proses ke-" << proses++ << " : ";
             int temp = kumpulanData[i];
             for (j = i; j >= jarak && temp < kumpulanData[j - jarak]; j -= jarak){
                 kumpulanData[j] = kumpulanData[j - jarak];
@@ -282,10 +289,10 @@ void shellAsc(int banyakData, larik kumpulanData) {
 }
 
 void shellDes(int banyakData, larik kumpulanData) {
-    int j = 0;
+    int j = 0, proses = 1;
     for (int jarak = banyakData / 2; jarak > 0; jarak /= 2){
         for (int i = jarak; i < banyakData; i++){
-            cout << "Proses ke-" << i + 1 << " : ";
+            cout << "Proses ke-" << proses++ << " : ";
             int temp = kumpulanData[i];
             for (j = i; j >= jarak && temp > kumpulanData[j - jarak]; j -= jarak){
                 kumpulanData[j] = kumpulanData[j - jarak];
