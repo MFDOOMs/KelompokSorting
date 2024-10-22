@@ -21,11 +21,6 @@ Deskripsi    :
 #include <iostream>
 using namespace std;
 
-
-<<<<<<< HEAD
-
-
-=======
 // Deklarasi array dengan alias
 typedef int larik[30];
 
@@ -34,6 +29,8 @@ typedef int larik[30];
 int inputBanyakData(int banyakData);
 void inputData(int& banyakData, larik kumpulanData);
 void menu(int banyakData, larik kumpulanData);
+void tukar(int& x, int& y);
+void printLarik(larik kumpulanData, int n);
 
 void bubble1Asc(int banyakData, larik kumpulanData);
 void bubble1Des(int banyakData, larik kumpulanData);
@@ -134,4 +131,45 @@ void menu(int banyakData, larik kumpulanData) {
         break;
     }
 }
->>>>>>> b27f44b3fa0fa3f5b584dc7a6102a77d04527f31
+
+void tukar(int& x, int& y) {
+    int temp = y;
+    y = x;
+    x = temp;
+}
+
+void printLarik(larik kumpulanData, int n) {
+    for (int i = 0; i < n; i++)
+        cout << kumpulanData[i] << " ";
+    cout << endl;
+}
+
+void bubble1Asc(int banyakData, larik kumpulanData) {
+    for (int i = 0; i < banyakData; i++){
+        for (int j = 0; j < banyakData - 1; j++){
+            if (kumpulanData[j] > kumpulanData[j + 1]){
+                tukar(kumpulanData[j], kumpulanData[ j + 1]);
+                printLarik(kumpulanData, banyakData);
+            }
+        }
+    }
+}
+
+void bubble1Des(int banyakData, larik kumpulanData) {
+    for (int i = 0; i < banyakData; i++){
+        for (int j = 0; j < banyakData - 1; j++){
+            if (kumpulanData[j] < kumpulanData[j + 1 ]){
+                tukar(kumpulanData[j], kumpulanData[j + 1]);
+                printLarik(kumpulanData, banyakData);
+            }
+        }
+    }
+}
+
+void bubble2Asc(int banyakData, larik kumpulanData) {
+    
+}
+
+void bubble2Des(int banyakData, larik kumpulanData);
+void bubble3Asc(int banyakData, larik kumpulanData);
+void bubble3Des(int banyakData, larik kumpulanData);
