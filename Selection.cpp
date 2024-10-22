@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+typedef int array[50];
 
 void insert(int arr[],int& nS){
 cout<<"Masukan Banyak angka yang ingin di sort : ";
@@ -57,11 +58,10 @@ void SelectionD(int arr[],int nS){
 int main(int argc, char const *argv[])
 {
     int nS;
-    int* arr= new int[nS];
+    array arr;
     insert(arr,nS);
     SelectionA(arr,nS);
     cout<<endl;
     SelectionD(arr,nS);
-    delete[] arr;
     return 0;
 }

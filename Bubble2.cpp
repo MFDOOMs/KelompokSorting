@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+typedef int array[50];
 void insert(int arr[],int& nB2){
     cout<<"Masukan banyak angka yang ingin di sort : ";
     cin>>nB2;
@@ -15,6 +16,8 @@ void tukar(int& x, int& y){
     x=y;
     y=temp;
 }
+
+
 
 void bubble2A(int arr[], int nB2){
     int pass=1;
@@ -53,11 +56,10 @@ void bubble2D(int arr[], int nB2){
 int main(int argc, char const *argv[])
 {
     int nB2;
-    int* arr = new int[nB2];
+    array arr;
     insert(arr,nB2);
     bubble2A(arr,nB2);
     cout<<endl;
     bubble2D(arr,nB2);
-    delete[] arr;
     return 0;
 }
