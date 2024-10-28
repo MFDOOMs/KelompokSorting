@@ -23,13 +23,13 @@ Deskripsi    : Menyorting angka secara ascending dan descending dengan menggunak
 using namespace std;
 
 // Deklarasi array dengan alias
-typedef int larik[50];
+typedef char larik[50];
 
 
 // Deklarasi Fungsi
 void inputBanyak(int& n);
 void inputData(larik arr,int n);
-void tukar(int &x, int &y);
+void tukar(char &x, char &y);
 void cetakLarik(larik arr,int n);
 void bubbleSort1Asc(larik arr, int n);
 void bubbleSort1Des(larik arr, int n);
@@ -46,6 +46,8 @@ void shellDes (larik arr, int n);
 void menuAtas();
 void menuBawahAsc();
 void menuBawahDes();
+void linearSearch();
+void binarySearch();
 
 
 // Utama
@@ -69,8 +71,8 @@ void inputData(larik arr,int n){
     }
 }
 
-void tukar (int &x, int &y){
-    int temp = x;
+void tukar (char &x, char &y){
+    char temp = x;
     x = y;
     y = temp;
 }
@@ -453,4 +455,41 @@ void menuBawahDes(){
         }
     } while (menuBD == true);
     
+}
+
+void linearSearch(larik arr, int n, char x){
+    bool found = false; 
+    for (int i=0; i<n; i++){
+        if (arr[i] == x){
+        cout << "Angka ditemukan di: " << i;
+        found = true;
+        break;
+        }
+    }
+    if (!found){
+        cout << "Angka tidak ditemukan.";
+    }
+}
+
+void binarySearch(larik arr, int n, char x) {
+    bool found = false; 
+    for (int i=0; i<n; i++){
+        if (arr[n/2] == x) {
+            cout << "Angka ditemukan di: " << i;
+            found = true;
+            break;
+        }
+        else if (arr[n/2 > x]) {
+            n = n/2-1;
+            i = 0;
+            continue;
+        }
+        else if (arr[n/2 < x]) {
+            i = n/2+1;
+            continue;
+        }
+    }
+    if (!found){
+        cout << "Angka tidak ditemukan.";
+    }
 }
