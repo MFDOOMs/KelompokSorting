@@ -474,17 +474,17 @@ void linearSearch(larik arr, int n, char x){
 void binarySearch(larik arr, int n, char x) {
     bool found = false; 
     for (int i=0; i<n; i++){
-        if (arr[n/2] == x) {
+        if (arr[(n + i)/2] == x) {
             cout << "Angka ditemukan di: " << i;
             found = true;
             break;
         }
-        else if (arr[n/2 > x]) {
+        else if (arr[(n + i)/2 < x]) {
             n = n/2-1;
             i = 0;
             continue;
         }
-        else if (arr[n/2 < x]) {
+        else if (arr[(n + i)/2 > x]) {
             i = n/2+1;
             continue;
         }
