@@ -48,12 +48,14 @@ void menuBawahAsc();
 void menuBawahDes();
 void linearSearch();
 void binarySearch();
+void MenuUtama();
+void MenuSearching();
 
 
 // Utama
 int main()
 {
-    menuAtas();
+    MenuUtama();
     return 0;
 }
 
@@ -493,58 +495,63 @@ void binarySearch(larik arr, int n, char x) {
         cout << "Angka tidak ditemukan.";
     }
 }
- void menusroting(){
-        bool menuS = true;
-        int pilihan;
-        do{
-            cout<<"1. Linear search"<<endl;
-            cout<<"2. Binary search"<<endl;
-            cout<<"3. Mundur"<<endl;
-            cout<<"Masukkan pilihan : ";
-            cin>>pilihan;
-            switch (pilihan)
-            {
-            case 1:
-                /* code */
-                break;
-            case 2:
-                /* code */
-                break;
-            case 3:
-                menuS = false;
-                break;
-            default:
-            cout<<"pilhan tidak valid"<<endl;
-                break;
-            }
-        } 
-    }
-    while(menuS);
-    void menuAtasB(){
-    bool MenuAtasB1 = true;
+void MenuSearch(){
+    bool MenuS;
     int pilihan;
-    do {
-        cout << "1. Sorting" << endl;
-        cout << "2. Searching" << endl;
-        cout << "3. Keluar" << endl;
-        cout << "Masukkan pilihan : ";
-        cin >> pilihan;
-
-        switch (pilihan) {
-            case 1:
-                MenuAtas();
-                break;
-            case 2:
-               MenuS();
-                break;
-            case 3:
-                MenuAtasB1 = false;
-                cout << "Keluar dari program." << endl;
-                break;
-            default:
-                cout << "Pilihan tidak valid" << endl;
-                break;
+    int n;
+    larik arr;
+    char x;
+    do
+    {
+        cout<<"1. Linear search"<<endl;
+        cout<<"2. Binary Search"<<endl;
+        cout<<"3. Mundur"<<endl;
+        switch (pilihan)
+        {
+        case 1:
+            linearSearch(arr,n,x);
+            break;
+        case 2:
+            binarySearch(arr,n,x);
+            break;
+        case 3:
+        MenuS = false;
+            break;
+        
+        default:
+        cout<<"Pilihan tidak valid"<<endl;
+            break;
         }
-    } while(MenuAtasB1);
+    } while (MenuS);
+    
 }
 
+void MenuUtama(){
+    bool MenuU;
+    int pilihan;
+    do
+    {
+    cout<<"1. Sorting"<<endl;
+    cout<<"2. Searching"<<endl;
+    cout<<"3. Keluar"<<endl;
+    cout<<"Masukan Pilihan : ";
+    cin>>pilihan;
+    switch (pilihan)
+    {
+    case 1:
+        menuAtas();
+        break;
+    case 2:
+        MenuSearch();
+        break;
+    case 3:
+        MenuU =false;
+        break;
+    default:
+    cout<<"pilihan tidak valid";
+        break;
+    }
+    } while (MenuU);
+    
+    
+}
