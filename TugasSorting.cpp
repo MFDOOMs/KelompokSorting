@@ -3,19 +3,19 @@ Nama         : Fardan Fadhilah Andicha Putra
 NPM          : 140810240084
 Bagian       : Bubble sort cara ke-1 dan shell sort
 Tanggal Buat : 28 Oktober 2024
-Deskripsi    : Menyorting angka secara ascending dan descending dengan menggunakan bubble sort cara ke-1 dan shell sort 
+Deskripsi    : Menyorting angka secara ascending dan descending dengan menggunakan bubble sort cara ke-1, shell sort dan membuat menu untuk searching.
 
 Nama         : Tristan Bonardo Silalahi
 NPM          : 140810240058
 Bagian       : Bubble sort cara ke-2 dan selection sort
 Tanggal Buat : 28 Oktober 2024
-Deskripsi    : Menyorting angka secara ascending dan descending dengan menggunakan bubble sort cara ke-2 dan selection sort 
+Deskripsi    : Menyorting angka secara ascending dan descending dengan menggunakan bubble sort cara ke-2, selection sort. membuat menu untuk searching, membuat fungsi binary search dan mengkonversi dari integer menjadi string.
 
 Nama         : Noell Valentino Timothy
 NPM          : 140810240064
 Bagian       : Bubble sort cara ke-3 dan insertion sort
 Tanggal Buat : 28 Oktober 2024
-Deskripsi    : Menyorting angka secara ascending dan descending dengan menggunakan bubble sort cara ke-3 dan insertion sort 
+Deskripsi    : Menyorting angka secara ascending dan descending dengan menggunakan bubble sort cara ke-3, insertion sort, dan membuat fungsi linear search.
 */
 
 
