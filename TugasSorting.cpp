@@ -97,7 +97,7 @@ void menuSort(){
     {
         cout<<"1. Mengurutkan secara ascending"<<endl;
         cout<<"2. Mengurutkan secara descending"<<endl;
-        cout<<"3. Keluar"<<endl;
+        cout<<"3. Mundur"<<endl;
         cout<<" Masukan pilihan : ";cin>>pilihan;
         switch (pilihan)
         {
@@ -286,12 +286,12 @@ void menuBawahDes(){
 }
 
 void inputBanyak(int& n){
-    cout << "Masukan banyak angka : ";
+    cout << "Masukan banyak karakter : ";
     cin >> n;
 }
 
 void inputData(larik arr,int n){
-    cout << "Masukan angka sebanyak " << n << " : " << endl;
+    cout << "Masukan karakter sebanyak " << n << " : " << endl;
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
@@ -533,18 +533,18 @@ void linearSearch(larik arr, int n, char x) {
     bool found = false; 
     for (int i=0; i<n; i++){
         if (arr[i] == x){
-        cout << "Angka ditemukan di index : " << i << endl;
+        cout << "Karakter ditemukan di index : " << i << endl;
         found = true;
         break;
         }
     }
     if (!found){
-        cout << "Angka tidak ditemukan." << endl;
+        cout << "Karakter tidak ditemukan." << endl;
     }
 }
 
 void binarySearch(larik arr, int n, char x) {
-    cout << "Masukkan angka yang ingin dicari : ";
+    cout << "Masukkan karakter yang ingin dicari : ";
     cin >> x;
     bool found = false; 
 
@@ -555,7 +555,7 @@ void binarySearch(larik arr, int n, char x) {
         int tengah = bawah + (atas - bawah) / 2;
 
         if (arr[tengah] == x) {
-            cout << "Angka ditemukan di index : " << tengah << endl;
+            cout << "Karakter ditemukan di index : " << tengah << endl;
             found = true;
             break;
         }
@@ -571,6 +571,6 @@ void binarySearch(larik arr, int n, char x) {
     }
 
     if (!found){
-        cout << "Angka tidak ditemukan." << endl;
+        cout << "Karakter tidak ditemukan." << endl;
     }
 }
