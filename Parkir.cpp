@@ -70,7 +70,7 @@ void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
     while (true){
         cout<<"Detik: ";
         cin>>DataM.masuk.detik;
-        if (DataM.masuk.detik < 0 || DataM.masuk.menit > 60){
+        if (DataM.masuk.detik < 0 || DataM.masuk.detik > 60){
             cout << "Input tidak valid, coba lagi.\n";
         }
         else {
@@ -103,7 +103,7 @@ void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
     while (true){
         cout<<"Detik: ";
         cin>>DataM.keluar.detik;
-        if (DataM.keluar.detik < 0 || DataM.keluar.menit > 60){
+        if (DataM.keluar.detik < 0 || DataM.keluar.detik > 60){
             cout << "Input tidak valid, coba lagi.\n";
         }
         else {
@@ -116,24 +116,21 @@ void HitungLama (Lamaparkir DataM,Kendaraan& Nama){
 if(DataM.masuk.detik>DataM.keluar.detik){
     DataM.keluar.detik+=60;
     DataM.keluar.menit-=1;
-    Nama.lama.detik=DataM.keluar.detik-DataM.masuk.detik;
 }
+Nama.lama.detik=DataM.keluar.detik-DataM.masuk.detik;
+
     if(DataM.masuk.menit>DataM.keluar.menit){
         DataM.keluar.menit+=60;
         DataM.keluar.jam-=1;
-        Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
+        
     }
-    else{
-        Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
-    }
+    Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
     if (DataM.masuk.jam >DataM.keluar.jam)
     {
         DataM.keluar.jam=DataM.keluar.jam+24;
-        Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
+        
     }
-    else{
-        Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
-    }
+ Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
     
 }
 
@@ -141,27 +138,18 @@ void HitungBayar(Lamaparkir DataM,Kendaraan& Nama){
     int Bmobil=3000;
     int Bmotor=2000;
     Nama.biaya=0;
-    if(Nama.lama.jam==0&&Nama.lama.menit<5){
-        cout<<"Gratis";
-    }
-    else{
-        for (int i = 0; i <Nama.lama.jam; i++)
-        {
-            if(Nama.jenis=='a'){
-                Nama.biaya+=Bmobil;
-            }
-            else if (Nama.jenis=='b'){
-                Nama.biaya+=Bmotor;
-            }
-        }
-        
+    int totalJam = Nama.lama.jam + (Nama.lama.menit > 0 ? 1 : 0);
+    if (Nama.jenis == 'a') {
+        Nama.biaya = totalJam * Bmobil;
+    } else if (Nama.jenis == 'b') {
+        Nama.biaya = totalJam * Bmotor;
     }
 }
 
 void print(Kendaraan Nama){
-    cout<<"Jenis Kendaraan : "<<Nama.tipe;
-    cout<<"Lama parkir : "<<Nama.lama.jam<<" jam "<<Nama.lama.menit<<" menit "<<Nama.lama.detik<<" detik";
-    cout<<"Biaya yang harus dibayarkan :"<<Nama.biaya<<" rp";
+    cout<<"Jenis Kendaraan : "<<Nama.tipe<<endl;
+    cout<<"Lama parkir : "<<Nama.lama.jam<<" jam "<<Nama.lama.menit<<" menit "<<Nama.lama.detik<<" detik"<<endl;
+    cout<<"Biaya yang harus dibayarkan :"<<Nama.biaya<<" rp"<<endl;
 }
 
 int main(int argc, char const *argv[])
