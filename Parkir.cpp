@@ -115,29 +115,22 @@ void HitungLama (Lamaparkir DataM,Kendaraan& Nama){
     if(DataM.masuk.detik>DataM.keluar.detik){
         DataM.keluar.detik+=60;
         DataM.keluar.menit-=1;
-        Nama.lama.detik=DataM.keluar.detik-DataM.masuk.detik;
     }
+    Nama.lama.detik=DataM.keluar.detik-DataM.masuk.detik;
 
     if(DataM.masuk.menit>DataM.keluar.menit){
         DataM.keluar.menit+=60;
         DataM.keluar.jam-=1;
         Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
     }
-
-    else{
-        Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
-    }
+    Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
+    
 
     if (DataM.masuk.jam >DataM.keluar.jam)
     {
-        DataM.keluar.jam=DataM.keluar.jam+24;
-        Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
+        DataM.keluar.jam+=24;
     }
-
-    else{
-        Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
-    }
-    
+    Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
 }
 
 void HitungBayar(Lamaparkir DataM,Kendaraan& Nama){
@@ -148,16 +141,20 @@ void HitungBayar(Lamaparkir DataM,Kendaraan& Nama){
         cout<<"Gratis";
     }
     else{
-        for (int i = 0; i <Nama.lama.jam; i++)
-        {
+        for (int i = 0; i <Nama.lama.jam; i++){
             if(Nama.jenis=='a'){
                 Nama.biaya+=Bmobil;
+                    if (Nama.lama.menit > 0) {
+                        Nama.biaya += (Nama.lama.menit / 60.0) * Bmobil; 
             }
             else if (Nama.jenis=='b'){
                 Nama.biaya+=Bmotor;
+                    if (Nama.lama.menit > 0) {
+                        Nama.biaya += (Nama.lama.menit / 60.0) * Bmotor;
+                    }
             }
+            }   
         }
-        
     }
 }
 
