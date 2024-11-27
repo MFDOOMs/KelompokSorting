@@ -161,15 +161,23 @@ void HitungBayar(Lamaparkir DataM,Kendaraan& Nama){
                 Nama.biaya += Bmotor;
             }
         }
+        if (Nama.lama.menit > 0 || Nama.lama.detik > 0) {
+            if (Nama.jenis == 'a'){
+                Nama.biaya += Bmobil;
+            }
+            else if (Nama.jenis == 'b'){
+                Nama.biaya += Bmotor;
+            }
+        }
     }
 }
 
 void print (Lamaparkir& DataM, Kendaraan Nama) {
     cout << endl;
-    cout << "Jam Datang = " << DataM.masuk.jam << " : " << DataM.masuk.menit << " : " << DataM.masuk.detik << endl;
-    cout << "Jam Pulang = " << DataM.keluar.jam << " : " << DataM.keluar.menit << " : " << DataM.keluar.detik << endl;
-    cout << "Lama parkir = "<< Nama.lama.jam << " : " << Nama.lama.menit << " : "<< Nama.lama.detik << endl;
-    cout << "Jenis Kendaraan : "<< Nama.tipe << endl;
+    cout << "Jam Datang \t= " << DataM.masuk.jam << " : " << DataM.masuk.menit << " : " << DataM.masuk.detik << endl;
+    cout << "Jam Pulang \t= " << DataM.keluar.jam << " : " << DataM.keluar.menit << " : " << DataM.keluar.detik << endl;
+    cout << "Lama parkir \t= "<< Nama.lama.jam << " : " << Nama.lama.menit << " : "<< Nama.lama.detik << endl;
+    cout << "Jenis Kendaraan = "<< Nama.tipe << endl;
     cout << "Bayar = Rp." << Nama.biaya;
 }
 
