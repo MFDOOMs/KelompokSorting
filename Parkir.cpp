@@ -7,15 +7,17 @@ struct waktu{
     int menit;
     int detik;
 };
+
 struct Kendaraan{
-char jenis;
-int biaya;
-string tipe;
-waktu lama;
+    char jenis;
+    int biaya;
+    string tipe;
+    waktu lama;
 };
+
 struct Lamaparkir{
-waktu masuk;
-waktu keluar;
+    waktu masuk;
+    waktu keluar;
 };
 
 
@@ -29,26 +31,85 @@ void InputJenis(Kendaraan& Nama1){
         if (Nama1.jenis == 'a') {
             Nama1.tipe = "Mobil";
             break;
+
         } else if (Nama1.jenis == 'b') {
             Nama1.tipe = "Motor";
             break;
+
         } else {
             cout << "Input tidak valid. Harap masukkan 'A' atau 'B'.\n";
         }
     }
 }
 
-
 }
 void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
-    cout<<"Masukan waktu masuk :"<<endl;
-    cout<<"Jam :";cin>>DataM.masuk.jam;
-    cout<<"Menit : ";cin>>DataM.masuk.menit;
-    cout<<"Detik : ";cin>>DataM.masuk.detik;
-    cout<<"Masukan waktu keluar : "<<endl;
-    cout<<"Jam :";cin>>DataM.keluar.jam;
-    cout<<"Menit : ";cin>>DataM.keluar.menit;
-    cout<<"Detik : ";cin>>DataM.keluar.detik;
+    cout<<"Masukan waktu masuk: "<<endl;
+    while (true){
+        cout<<"Jam: ";
+        cin>>DataM.masuk.jam;
+        if (DataM.masuk.jam < 0 || DataM.masuk.jam > 23){
+            cout << "Input tidak valid, coba lagi.\n";
+        }
+        else {
+            break;
+        }
+    }
+    
+    while (true){
+        cout<<"Menit: ";
+        cin>>DataM.masuk.menit;
+        if (DataM.masuk.menit > 60 || DataM.masuk.menit < 0){
+            cout << "Input tidak valid, coba lagi.\n";
+        }
+        else{
+            break;
+        }
+    }
+
+    while (true){
+        cout<<"Detik: ";
+        cin>>DataM.masuk.detik;
+        if (DataM.masuk.detik < 0 || DataM.masuk.menit > 60){
+            cout << "Input tidak valid, coba lagi.\n";
+        }
+        else {
+            break;
+        }
+    }
+    
+    cout<<"Masukan waktu keluar: "<<endl;
+    while (true){
+        cout<<"Jam: ";
+        cin>>DataM.keluar.jam;
+        if (DataM.keluar.jam < 0 || DataM.keluar.jam > 23){
+            cout << "Input tidak valid, coba lagi.\n";
+        }
+        else {
+            break;
+        }
+    }
+    while (true){
+        cout<<"Menit: ";
+        cin>>DataM.keluar.menit;
+        if (DataM.keluar.menit > 60 || DataM.keluar.menit < 0){
+            cout << "Input tidak valid, coba lagi.\n";
+        }
+        else{
+            break;
+        }
+    }
+
+    while (true){
+        cout<<"Detik: ";
+        cin>>DataM.keluar.detik;
+        if (DataM.keluar.detik < 0 || DataM.keluar.menit > 60){
+            cout << "Input tidak valid, coba lagi.\n";
+        }
+        else {
+            break;
+        }
+    }
 }
 
 void HitungLama (Lamaparkir DataM,Kendaraan& Nama){
