@@ -41,12 +41,12 @@ void InputJenis(Kendaraan& Nama1){
 }
 
 }
-void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
+void InputWaktu(Lamaparkir& DataM, Kendaraan& Nama){
     cout << endl;
-    cout<<"Masukan waktu masuk: "<<endl;
-    while (true){
-        cout<<"Jam: ";
-        cin>>DataM.masuk.jam;
+    cout << "Masukan waktu masuk: "<<endl;
+    while (true) {
+        cout << "Jam: ";
+        cin >> DataM.masuk.jam;
         if (DataM.masuk.jam < 0 || DataM.masuk.jam > 23){
             cout << "Input tidak valid, coba lagi.\n";
         }
@@ -55,20 +55,20 @@ void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
         }
     }
     
-    while (true){
-        cout<<"Menit: ";
-        cin>>DataM.masuk.menit;
+    while (true) {
+        cout << "Menit: ";
+        cin >> DataM.masuk.menit;
         if (DataM.masuk.menit > 60 || DataM.masuk.menit < 0){
             cout << "Input tidak valid, coba lagi.\n";
         }
-        else{
+        else {
             break;
         }
     }
 
-    while (true){
-        cout<<"Detik: ";
-        cin>>DataM.masuk.detik;
+    while (true) {
+        cout << "Detik: ";
+        cin >> DataM.masuk.detik;
         if (DataM.masuk.detik > 60 || DataM.masuk.detik < 0){
             cout << "Input tidak valid, coba lagi.\n";
         }
@@ -76,11 +76,12 @@ void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
             break;
         }
     }
+
     cout << endl;
-    cout<<"Masukan waktu keluar: "<<endl;
+    cout << "Masukan waktu keluar: " << endl;
     while (true){
-        cout<<"Jam: ";
-        cin>>DataM.keluar.jam;
+        cout << "Jam: ";
+        cin >> DataM.keluar.jam;
         if (DataM.keluar.jam < 0 || DataM.keluar.jam > 23){
             cout << "Input tidak valid, coba lagi.\n";
         }
@@ -89,8 +90,8 @@ void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
         }
     }
     while (true){
-        cout<<"Menit: ";
-        cin>>DataM.keluar.menit;
+        cout << "Menit: ";
+        cin >> DataM.keluar.menit;
         if (DataM.keluar.menit > 60 || DataM.keluar.menit < 0){
             cout << "Input tidak valid, coba lagi.\n";
         }
@@ -100,8 +101,8 @@ void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
     }
 
     while (true){
-        cout<<"Detik: ";
-        cin>>DataM.keluar.detik;
+        cout << "Detik: ";
+        cin >> DataM.keluar.detik;
         if (DataM.keluar.detik > 60 || DataM.keluar.detik < 0){
             cout << "Input tidak valid, coba lagi.\n";
         }
@@ -112,56 +113,58 @@ void InputWaktu(Lamaparkir& DataM,Kendaraan& Nama){
 }
 
 void HitungLama (Lamaparkir DataM,Kendaraan& Nama){
-    if(DataM.masuk.detik>DataM.keluar.detik){
-        DataM.keluar.detik+=60;
-        DataM.keluar.menit-=1;
-        Nama.lama.detik=DataM.keluar.detik-DataM.masuk.detik;
+    if (DataM.masuk.detik > DataM.keluar.detik){
+        DataM.keluar.detik += 60;
+        DataM.keluar.menit -= 1;
+        Nama.lama.detik = DataM.keluar.detik - DataM.masuk.detik;
+    }
+    else {
+        Nama.lama.detik = DataM.keluar.detik - DataM.masuk.detik;
     }
 
-    if(DataM.masuk.menit>DataM.keluar.menit){
-        DataM.keluar.menit+=60;
-        DataM.keluar.jam-=1;
-        Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
+    if (DataM.masuk.menit > DataM.keluar.menit){
+        DataM.keluar.menit += 60;
+        DataM.keluar.jam -= 1;
+        Nama.lama.menit = DataM.keluar.menit - DataM.masuk.menit;
+    }
+    else {
+        Nama.lama.menit = DataM.keluar.menit - DataM.masuk.menit;
     }
 
-    else{
-        Nama.lama.menit=DataM.keluar.menit-DataM.masuk.menit;
-    }
 
-    if (DataM.masuk.jam >DataM.keluar.jam)
+    if (DataM.masuk.jam > DataM.keluar.jam)
     {
-        DataM.keluar.jam=DataM.keluar.jam+24;
-        Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
+        DataM.keluar.jam += 24;
+        Nama.lama.jam = DataM.keluar.jam - DataM.masuk.jam;
     }
-
     else{
-        Nama.lama.jam = DataM.keluar.jam-DataM.masuk.jam;
+        Nama.lama.jam = DataM.keluar.jam - DataM.masuk.jam;
     }
     
 }
 
 void HitungBayar(Lamaparkir DataM,Kendaraan& Nama){
-    int Bmobil=3000;
-    int Bmotor=2000;
-    Nama.biaya=0;
-    if(Nama.lama.jam==0&&Nama.lama.menit<5){
-        cout<<"Gratis";
+    int Bmobil = 3000;
+    int Bmotor = 2000;
+    Nama.biaya = 0;
+
+    if (Nama.lama.jam == 0 && Nama.lama.menit < 5){
+        cout << "\nGratis";
     }
-    else{
-        for (int i = 0; i <Nama.lama.jam; i++)
+    else {
+        for (int i = 0; i < Nama.lama.jam; i++)
         {
-            if(Nama.jenis=='a'){
-                Nama.biaya+=Bmobil;
+            if (Nama.jenis == 'a'){
+                Nama.biaya += Bmobil;
             }
-            else if (Nama.jenis=='b'){
-                Nama.biaya+=Bmotor;
+            else if (Nama.jenis == 'b'){
+                Nama.biaya += Bmotor;
             }
         }
-        
     }
 }
 
-void print(Lamaparkir& DataM, Kendaraan Nama){
+void print (Lamaparkir& DataM, Kendaraan Nama) {
     cout << endl;
     cout << "Jam Datang = " << DataM.masuk.jam << " : " << DataM.masuk.menit << " : " << DataM.masuk.detik << endl;
     cout << "Jam Pulang = " << DataM.keluar.jam << " : " << DataM.keluar.menit << " : " << DataM.keluar.detik << endl;
