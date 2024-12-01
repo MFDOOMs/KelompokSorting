@@ -1,12 +1,20 @@
 #include <iostream>
 using namespace std;
 
+struct waktu{
+    int jam;
+    int menit;
+    int detik;
+};
+
 struct Mahasiswa{
     string npm;
     string nama;
     float NilaiPenguji1;
     float NilaiPenguji2;
     float NilaiPenguji3;
+    waktu mulai;
+    waktu selesai;
 };
 
 typedef Mahasiswa larikMahasiswa[10];
