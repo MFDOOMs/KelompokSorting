@@ -166,7 +166,7 @@ string statusMhs (float Nilai){
     }
 }
 
-void output(larikMahasiswa mhs, int n){
+void daftarTabel(larikMahasiswa mhs, int n){
     cout << "Daftar Nilai Sidang Program Studi TI" << endl;
     cout << "---------------------------------------------------------------------------------------------------------------------------------------------\n";
     cout << "No" << setw(10) 
@@ -209,6 +209,30 @@ void output(larikMahasiswa mhs, int n){
     
 }
 
+void outputAkhir(larikMahasiswa mhs, int n) {
+    int pilihan = 0;
+    cout << "Pilih output yang diinginkan : \n";
+    cout << "1. Tabel\n";
+    cout << "2. Rata-rata nilai\n";
+    cout << "3. Nilai tertinggi\n";
+    cout << "4. Nilai terendah\n";
+    cout << "5. Keluar dari program\n";
+    cout << "Masukkan pilihan : ";
+    do {
+        cin >> pilihan;
+    } while (pilihan < 1 || pilihan > 5);
+
+    switch (pilihan)
+    {
+    case 1: daftarTabel(mhs, n); outputAkhir(mhs, n);;
+    case 2: cout << "\nRata-rata : " << rataRataNilaiAkhir(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
+    case 3: cout << "\nNilai Tertinggi : " << NilaiTinggi(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
+    case 4: cout << "\nNilai Terendah  : " << NilaiRendah(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
+    case 5: return;
+    default: break;
+    }    
+}
+
 int main(int argc, char const *argv[])
 {
     larikMahasiswa mhs;
@@ -217,10 +241,7 @@ int main(int argc, char const *argv[])
 
     inputData(mhs,n);
 
-    output(mhs,n);
-    cout << "Rata-rata : " << rataRataNilaiAkhir(mhs,n) << endl;
-    cout << "Nilai Tertinggi : " << NilaiTinggi(mhs,n) << endl;
-    cout << "Nilai Terendah  : " << NilaiRendah(mhs,n) << endl;
+    outputAkhir(mhs, n);
     
     return 0;
 }
