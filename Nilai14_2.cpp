@@ -1,3 +1,23 @@
+/*
+Nama         : Fardan Fadhilah Andicha Putra
+NPM          : 140810240084
+Bagian       : Merapikan output dan membuat laporan
+Tanggal Buat : 3 Desember 2024
+Deskripsi    : Merapikan output yang dihasilkan dari penyimpanan data-data mahasiswa dan membuat laporannya.
+
+Nama         : Tristan Bonardo Silalahi
+NPM          : 140810240058
+Bagian       : Daftar nilai mahasiswa tanpa ada waktu ujian
+Tanggal Buat : 3 Desember 2024
+Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct)
+
+Nama         : Noell Valentino Timothy
+NPM          : 140810240064
+Bagian       : Daftar nilai mahasiswa dengan waktu ujian
+Tanggal Buat : 3 Desember 2024
+Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct), ditambah dengan waktu ujian mahasiswa.
+*/
+
 #include <iostream>
 #include <ios>
 #include <iomanip>
@@ -61,22 +81,22 @@ void inputWaktu(waktu& waktuMhs){
 void inputData(larikMahasiswa& mhs,int n){
     for (int i = 0; i < n; i++)
     {
-        cout << "\nData Mahasiswa ke-" << i+1 << " : " << endl;
-        cout << "NPM  : "; cin >> mhs[i].npm;
-        cout << "Nama : "; getline(cin >> ws,mhs[i].nama);
+        cout << "\nData Mahasiswa ke-" << i+1 << ": " << endl;
+        cout << "NPM: "; cin >> mhs[i].npm;
+        cout << "Nama: "; getline(cin >> ws,mhs[i].nama);
 
         do {
-            cout << "Nilai Penguji 1 : ";
+            cout << "Nilai Penguji 1: ";
             cin >> mhs[i].nilaiPenguji1;
         } while (mhs[i].nilaiPenguji1 < 0 || mhs[i].nilaiPenguji1 > 100);
 
         do {
-            cout << "Nilai Penguji 2 : ";
+            cout << "Nilai Penguji 2: ";
             cin >> mhs[i].nilaiPenguji2;
         } while (mhs[i].nilaiPenguji2 < 0 || mhs[i].nilaiPenguji2 > 100);
 
         do {
-            cout << "Nilai Penguji 3 : ";
+            cout << "Nilai Penguji 3: ";
             cin >> mhs[i].nilaiPenguji3;
         } while (mhs[i].nilaiPenguji3 < 0 || mhs[i].nilaiPenguji3 > 100);
 
@@ -168,7 +188,7 @@ string statusMhs (float Nilai){
 
 void daftarTabel(larikMahasiswa mhs, int n){
     cout << "Daftar Nilai Sidang Program Studi TI" << endl;
-    cout << "---------------------------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
     cout << "No" << setw(10) 
     << "NPM" << setw(13) 
     << "Nama" << setw(10)
@@ -179,9 +199,9 @@ void daftarTabel(larikMahasiswa mhs, int n){
     << "Huruf Mutu" << setw(19)
     << "Waktu Mulai" << setw(19)
     << "Waktu Selesai" << setw(19)
-    << "Lama Sidang" << setw(10)
+    << "Lama Sidang" << setw(13)
     << "Status" << endl;
-    cout << "---------------------------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 
     for (int i = 0; i < n; i++)
     {
@@ -199,25 +219,25 @@ void daftarTabel(larikMahasiswa mhs, int n){
         << mhs[i].nilaiPenguji2 << setw(10)
         << mhs[i].nilaiPenguji3 << setw(15)
         << nilaiAkhir1 << setw(15)
-        << Mutu << setw(15)
-        << mhs[i].mulai.jam << ":" << mhs[i].mulai.menit << ":" << mhs[i].mulai.detik << setw(15)
-        << mhs[i].selesai.jam << ":" << mhs[i].selesai.menit << ":" << mhs[i].selesai.detik << setw(15)
-        << lamaSidang.jam << ":" << lamaSidang.menit << ":" << lamaSidang.detik << setw(10)
+        << Mutu << setw(13)
+        << mhs[i].mulai.jam << ":" << mhs[i].mulai.menit << ":" << mhs[i].mulai.detik << setw(13)
+        << mhs[i].selesai.jam << ":" << mhs[i].selesai.menit << ":" << mhs[i].selesai.detik << setw(13)
+        << lamaSidang.jam << ":" << lamaSidang.menit << ":" << lamaSidang.detik << setw(13)
         << Stat << endl;
     }
-    cout << "---------------------------------------------------------------------------------------------------------------------------------------------\n";
+    cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
     
 }
 
 void outputAkhir(larikMahasiswa mhs, int n) {
     int pilihan = 0;
-    cout << "Pilih output yang diinginkan : \n";
+    cout << "Pilih output yang diinginkan: \n";
     cout << "1. Tabel\n";
     cout << "2. Rata-rata nilai\n";
     cout << "3. Nilai tertinggi\n";
     cout << "4. Nilai terendah\n";
     cout << "5. Keluar dari program\n";
-    cout << "Masukkan pilihan : ";
+    cout << "Masukkan pilihan: ";
     do {
         cin >> pilihan;
     } while (pilihan < 1 || pilihan > 5);
@@ -228,7 +248,7 @@ void outputAkhir(larikMahasiswa mhs, int n) {
     case 2: cout << "\nRata-rata : " << rataRataNilaiAkhir(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
     case 3: cout << "\nNilai Tertinggi : " << NilaiTinggi(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
     case 4: cout << "\nNilai Terendah  : " << NilaiRendah(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
-    case 5: return;
+    case 5: exit(1);
     default: break;
     }    
 }
