@@ -244,11 +244,11 @@ void outputAkhir(larikMahasiswa mhs, int n) {
 
     switch (pilihan)
     {
-    case 1: daftarTabel(mhs, n); outputAkhir(mhs, n);;
+    case 1: cout << "\n"; daftarTabel(mhs, n); outputAkhir(mhs, n);;
     case 2: cout << "\nRata-rata : " << rataRataNilaiAkhir(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
     case 3: cout << "\nNilai Tertinggi : " << NilaiTinggi(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
     case 4: cout << "\nNilai Terendah  : " << NilaiRendah(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
-    case 5: exit(1);
+    case 5: exit(0);
     default: break;
     }    
 }
@@ -258,9 +258,7 @@ int main(int argc, char const *argv[])
     larikMahasiswa mhs;
     int n;
     banyak(n);
-
     inputData(mhs,n);
-
     outputAkhir(mhs, n);
     
     return 0;
