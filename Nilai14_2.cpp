@@ -1,9 +1,9 @@
 /*
 Nama         : Fardan Fadhilah Andicha Putra
 NPM          : 140810240084
-Bagian       : Merapikan output dan membuat laporan
+Bagian       : Membuat menu program 1, merapikan output dan membuat laporan
 Tanggal Buat : 3 Desember 2024
-Deskripsi    : Merapikan output yang dihasilkan dari penyimpanan data-data mahasiswa dan membuat laporannya.
+Deskripsi    : Membuat menu program daftar nilai mahasiswa tanpa waktu ujian, Merapikan output yang dihasilkan dari penyimpanan data-data mahasiswa dan membuat laporannya.
 
 Nama         : Tristan Bonardo Silalahi
 NPM          : 140810240058
@@ -15,7 +15,7 @@ Nama         : Noell Valentino Timothy
 NPM          : 140810240064
 Bagian       : Daftar nilai mahasiswa dengan waktu ujian
 Tanggal Buat : 3 Desember 2024
-Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct), ditambah dengan waktu ujian mahasiswa.
+Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct), ditambah dengan waktu ujian mahasiswa dan menunya.
 */
 
 #include <iostream>
@@ -259,6 +259,7 @@ int main(int argc, char const *argv[])
     int n;
     banyak(n);
     inputData(mhs,n);
+    cout << endl;
     outputAkhir(mhs, n);
     
     return 0;

@@ -1,3 +1,23 @@
+/*
+Nama         : Fardan Fadhilah Andicha Putra
+NPM          : 140810240084
+Bagian       : Membuat menu program 1, merapikan output dan membuat laporan
+Tanggal Buat : 3 Desember 2024
+Deskripsi    : Membuat menu program daftar nilai mahasiswa tanpa waktu ujian, Merapikan output yang dihasilkan dari penyimpanan data-data mahasiswa dan membuat laporannya.
+
+Nama         : Tristan Bonardo Silalahi
+NPM          : 140810240058
+Bagian       : Daftar nilai mahasiswa tanpa ada waktu ujian
+Tanggal Buat : 3 Desember 2024
+Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct)
+
+Nama         : Noell Valentino Timothy
+NPM          : 140810240064
+Bagian       : Daftar nilai mahasiswa dengan waktu ujian
+Tanggal Buat : 3 Desember 2024
+Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct), ditambah dengan waktu ujian mahasiswa dan menunya.
+*/
+
 #include <iostream>
 #include <ios>
 #include <iomanip>
@@ -29,7 +49,7 @@ void Banyak(int & n){
 void inputData(larikMahasiswa& mhs,int n){
     for (int i = 0; i < n; i++)
     {
-        cout<<"Data Mahasiswa ke-"<<i+1<<": "<<endl;
+        cout<<"\nData Mahasiswa ke-"<<i+1<<": "<<endl;
         cout<<"NPM: ";cin>>mhs[i].npm;
         cout<<"Nama: ";cin.ignore();getline(cin,mhs[i].nama);
         do {
@@ -52,7 +72,7 @@ float NilaiAkhir(Mahasiswa mhs){
     return(mhs.NilaiPenguji1+mhs.NilaiPenguji2+mhs.NilaiPenguji3)/3.0;
 }
 
-float rataRataNilaiAkhir(larikMahasiswa& mhs, int n) {
+float rataRataNilaiAkhir(larikMahasiswa mhs, int n) {
     float total = 0;
     for (int i = 0; i < n; i++) {
         total += NilaiAkhir(mhs[i]);
@@ -110,7 +130,7 @@ string statusMhs(float Nilai){
 
 }
 
-void output(larikMahasiswa mhs,int n){
+void daftarTabel(larikMahasiswa mhs,int n){
     cout<< "Daftar Nilai Sidang Program Studi TI" << endl;
     cout<<"--------------------------------------------------------------------------------------------------------"<<endl;
     cout << "No" << setw(10) 
@@ -139,7 +159,30 @@ void output(larikMahasiswa mhs,int n){
         << Stat << endl;
     }
     cout<<"--------------------------------------------------------------------------------------------------------"<<endl;
-    
+}
+
+void outputAkhir(larikMahasiswa mhs, int n) {
+    int pilihan = 0;
+    cout << "Pilih output yang diinginkan: \n";
+    cout << "1. Tabel\n";
+    cout << "2. Rata-rata nilai\n";
+    cout << "3. Nilai tertinggi\n";
+    cout << "4. Nilai terendah\n";
+    cout << "5. Keluar dari program\n";
+    cout << "Masukkan pilihan: ";
+    do {
+        cin >> pilihan;
+    } while (pilihan < 1 || pilihan > 5);
+
+    switch (pilihan)
+    {
+    case 1: cout << "\n"; daftarTabel(mhs, n); outputAkhir(mhs, n);;
+    case 2: cout << "\nRata-rata : " << rataRataNilaiAkhir(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
+    case 3: cout << "\nNilai Tertinggi : " << NilaiTinggi(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
+    case 4: cout << "\nNilai Terendah  : " << NilaiRendah(mhs,n) << "\n\n"; outputAkhir(mhs, n);;
+    case 5: exit(0);
+    default: break;
+    }    
 }
 
 int main(int argc, char const *argv[])
@@ -147,13 +190,12 @@ int main(int argc, char const *argv[])
     larikMahasiswa mhs;
     int n;
     Banyak(n);
-    cout << endl;
     inputData(mhs,n);
     cout << endl;
     float rata=rataRataNilaiAkhir(mhs,n);
     float Tertinggi=NilaiTinggi(mhs,n);
     float Terendah=NilaiRendah(mhs,n);
-    output(mhs,n);
+    outputAkhir(mhs,n);
     cout<<"Rata-rata: "<<rata<<endl;
     cout<<"Nilai Tertinggi: "<<Tertinggi<<endl;
     cout<<"Nilai Terendah: "<<Terendah<<endl;
