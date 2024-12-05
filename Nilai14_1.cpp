@@ -23,20 +23,12 @@ Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct
 #include <iomanip>
 using namespace std;
 
-struct waktu{
-    int jam;
-    int menit;
-    int detik;
-};
-
 struct Mahasiswa{
     string npm;
     string nama;
     float NilaiPenguji1;
     float NilaiPenguji2;
     float NilaiPenguji3;
-    waktu mulai;
-    waktu selesai;
 };
 
 typedef Mahasiswa larikMahasiswa[10];
@@ -196,9 +188,5 @@ int main(int argc, char const *argv[])
     float Tertinggi=NilaiTinggi(mhs,n);
     float Terendah=NilaiRendah(mhs,n);
     outputAkhir(mhs,n);
-    cout<<"Rata-rata: "<<rata<<endl;
-    cout<<"Nilai Tertinggi: "<<Tertinggi<<endl;
-    cout<<"Nilai Terendah: "<<Terendah<<endl;
-    
     return 0;
 }
