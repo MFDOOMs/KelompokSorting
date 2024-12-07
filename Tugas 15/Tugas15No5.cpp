@@ -40,7 +40,9 @@ void Banyak(int & n){
     cout<<"Banyak Data: ";cin>>n;
 }
 
-void inputData(larikMahasiswa& mhs,int n){
+void inputData(string nFile, larikMahasiswa& mhs,int n){
+    ofstream fo;
+    fo.open(nFile, ios::binary | ios::app);
     for (int i = 0; i < n; i++)
     {
         cout<<"\nData Mahasiswa ke-"<<i+1<<": "<<endl;
@@ -58,6 +60,7 @@ void inputData(larikMahasiswa& mhs,int n){
             cout << "Nilai Penguji 3: ";
             cin >> mhs[i].NilaiPenguji3;
         } while (mhs[i].NilaiPenguji3 < 0 || mhs[i].NilaiPenguji3 > 100);
+        fo.write((char *) &mhs[i], sizeof(mhs[i]));
     }
     
 }
@@ -158,13 +161,20 @@ string daftarTabel(larikMahasiswa mhs,int n){
 }
 
 void outputFile (string nFile, larikMahasiswa mhs, int n, float rata, float tinggi, float rendah){
-    ofstream fo;
-    fo.open (nFile, ios::out);
-    fo << daftarTabel(mhs, n) << endl;
-    fo << "Rata-rata nilai: " << rata << endl;
-    fo << "Nilai tertinggi: " << tinggi << endl;
-    fo << "Nilai terendah: " << rendah;
-    fo.close();
+    ifstream fi;
+    Mahasiswa m;
+    int i=0;
+    fi.open (nFile, ios::binary);    
+    while (fi.read((char *) &m, sizeof(m))){    
+        mhs[i] = m;
+        cout << daftarTabel(mhs, n) << endl;
+        cout << "Rata-rata nilai: " << rata << endl;
+        cout << "Nilai tertinggi: " << tinggi << endl;
+        cout << "Nilai terendah: " << rendah;
+        i++;
+    }
+    fi.close();
+
 }
 
 int main(int argc, char const *argv[])
@@ -174,7 +184,7 @@ int main(int argc, char const *argv[])
     string nFile;
     cout << "Masukkan nama file yang akan dioutput: "; cin >> nFile;
     Banyak(n);
-    inputData(mhs,n);
+    inputData(nFile, mhs, n);
     cout << endl;
     float rata=rataRataNilaiAkhir(mhs,n);
     float Tertinggi=NilaiTinggi(mhs,n);
