@@ -2,22 +2,21 @@
 #include <fstream>
 using namespace std;
 
-string inputFileTxt();
+void inputFileTxt(string &txt);
 void periksaFile(string namaFile);
 int hitungKurawal(string namaFile);
+void outputDariTeks(string namaFile);
 
 int main() {
-    string teks = inputFileTxt();
-
-    periksaFile(teks);
+    string teks = "";
     
-    cout << "Jumlah pasangan kurung kurawal yang ada pada file teks tersebut yaitu : " << hitungKurawal(teks) << " pasang";
+    inputFileTxt(teks);
+    periksaFile(teks);
+    outputDariTeks(teks);
 }
 
-string inputFileTxt(){
-    string txt;
+void inputFileTxt(string &txt){
     cout << "Masukkan nama file txt: "; cin >> txt;
-    return txt;
 }
 
 void periksaFile(string namaFile) {
@@ -50,3 +49,16 @@ int hitungKurawal(string namaFile) {
     fileTeks.close();
     return kurawal;
 }
+
+void outputDariTeks(string namaFile){
+    string namaProgram;
+
+    ifstream fileTeks;
+    fileTeks.open(namaFile);
+
+    while(getline(fileTeks, namaProgram)) {
+        cout << "Nama Program : " << namaProgram << "\n";
+        cout << "Jumlah kurung kurawal : " << hitungKurawal(namaProgram) << " pasang.\n";
+    }
+}
+

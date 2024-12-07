@@ -8,13 +8,17 @@ void enkripsi (string inFile, int geser){
     char karakter;
     larik encript;
     int i = 0;
+
     ifstream fi;
-    ofstream fo;
     fi.open (inFile);
-    fo.open ("tugas4_output.txt");
+
+    ofstream fo;
+    fo.open ("Tugas15_4_output.txt");
+
     if (!fi){
         cerr << "File tidak ada.";
     }
+
     while (fi.get(karakter)){
         if (karakter >= 65 && karakter <= 90-geser){
             karakter += geser;
