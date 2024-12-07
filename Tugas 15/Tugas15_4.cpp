@@ -7,7 +7,6 @@ typedef char larik[100];
 void enkripsi (string inFile, int geser){
     char karakter;
     larik encript;
-    int i = 0;
 
     ifstream fi;
     fi.open (inFile);
@@ -27,7 +26,6 @@ void enkripsi (string inFile, int geser){
             karakter -= 26-geser;
         }
         fo << karakter;
-        i++;
     }
 }
 
