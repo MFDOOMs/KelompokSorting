@@ -49,13 +49,3 @@ int main(int argc, char const *argv[])
     output(NamaFile,jVokal,jKonsonan);
     return 0;
 }
-
-/*
-Cek isi
-buka(nama file)
-int jKonsonan=0;
-int JVokal=0;
-cek jika bukan AaIiEeUuOo
-jika bukan(jKonsonan++)
-jika iya(jVokal++) 
-*/
