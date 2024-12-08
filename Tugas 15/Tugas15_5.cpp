@@ -1,3 +1,20 @@
+/*
+Nama         : Fardan Fadhilah Andicha Putra
+NPM          : 140810240084
+Bagian       : Mengerjakan script tugas nomor 4 dan 5
+Tanggal Buat : 8 Desember 2024
+
+Nama         : Tristan Bonardo Silalahi
+NPM          : 140810240058
+Bagian       : Mengerjakan script tugas nomor 1 dan 2
+Tanggal Buat : 8 Desember 2024
+
+Nama         : Noell Valentino Timothy
+NPM          : 140810240064
+Bagian       : Mengerjakan script tugas nomor 3 dan laporan
+Tanggal Buat : 8 Desember 2024
+*/
+
 #include <iostream>
 #include <ios>
 #include <iomanip>
@@ -12,6 +29,37 @@ struct mahasiswa{
     float NilaiPenguji2;
     float NilaiPenguji3;
 };
+
+void inputJumlah(int &n) {
+    cout << "Masukkan jumlah mahasiswa: "; cin >> n;
+}
+
+void inputData(mahasiswa mhs, int n) {
+    ofstream fo;
+    fo.open("Tugas5.dat", ios::binary | ios::app);
+
+    for(int i = 0; i < n; i++){
+        cout << "\nMahasiswa " << i+1;
+        cout << "\nNIM: "; cin >> mhs.npm;
+        cout << "Nama: "; cin >> mhs.nama;
+        do {
+            cout << "Nilai Penguji 1: ";
+            cin >> mhs.NilaiPenguji1;
+        } while (mhs.NilaiPenguji1 < 0 || mhs.NilaiPenguji1 > 100);
+        do {
+            cout << "Nilai Penguji 2: ";
+            cin >> mhs.NilaiPenguji2;
+        } while (mhs.NilaiPenguji2 < 0 || mhs.NilaiPenguji2 > 100);
+        do {
+            cout << "Nilai Penguji 3: ";
+            cin >> mhs.NilaiPenguji3;
+        } while (mhs.NilaiPenguji3 < 0 || mhs.NilaiPenguji3 > 100);
+        
+        fo.write((char *) &mhs, sizeof(mhs));
+    }
+
+    fo.close();
+}
 
 char hurufMutu(float Nilai){
     char Mutu;
@@ -153,31 +201,11 @@ void outputAkhir(mahasiswa mhs) {
 }
 
 int main(){
-    ifstream fi;
-    ofstream fo;
     mahasiswa mhs;
+
     int n;
-    cout << "Masukkan jumlah mahasiswa: "; cin >> n;
-    fo.open("Tugas5.dat", ios::binary | ios::app);
-    for(int i = 0; i<n; i++){
-        cout << "\nMahasiswa " << i+1;
-        cout << "\nNIM: "; cin >> mhs.npm;
-        cout << "Nama: "; cin >> mhs.nama;
-        do {
-            cout << "Nilai Penguji 1: ";
-            cin >> mhs.NilaiPenguji1;
-        } while (mhs.NilaiPenguji1 < 0 || mhs.NilaiPenguji1 > 100);
-        do {
-            cout << "Nilai Penguji 2: ";
-            cin >> mhs.NilaiPenguji2;
-        } while (mhs.NilaiPenguji2 < 0 || mhs.NilaiPenguji2 > 100);
-        do {
-            cout << "Nilai Penguji 3: ";
-            cin >> mhs.NilaiPenguji3;
-        } while (mhs.NilaiPenguji3 < 0 || mhs.NilaiPenguji3 > 100);
-        
-        fo.write((char *) &mhs, sizeof(mhs));
-    }
-    fo.close();
-    outputAkhir (mhs);
+    inputJumlah(n);
+    
+    inputData(mhs, n);
+    outputAkhir(mhs);
 }

@@ -1,3 +1,20 @@
+/*
+Nama         : Fardan Fadhilah Andicha Putra
+NPM          : 140810240084
+Bagian       : Mengerjakan script tugas nomor 4 dan 5
+Tanggal Buat : 8 Desember 2024
+
+Nama         : Tristan Bonardo Silalahi
+NPM          : 140810240058
+Bagian       : Mengerjakan script tugas nomor 1 dan 2
+Tanggal Buat : 8 Desember 2024
+
+Nama         : Noell Valentino Timothy
+NPM          : 140810240064
+Bagian       : Mengerjakan script tugas nomor 3 dan laporan
+Tanggal Buat : 8 Desember 2024
+*/
+
 #include <iostream>
 #include <fstream>
 #include <cctype>
