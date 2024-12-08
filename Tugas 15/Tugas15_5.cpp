@@ -1,107 +1,19 @@
-/*
-Nama         : Fardan Fadhilah Andicha Putra
-NPM          : 140810240084
-Bagian       : Membuat menu program 1, merapikan output dan membuat laporan
-Tanggal Buat : 5 Desember 2024
-Deskripsi    : Membuat menu program daftar nilai mahasiswa tanpa waktu ujian, Merapikan output yang dihasilkan dari penyimpanan data-data mahasiswa dan membuat laporannya.
-
-Nama         : Tristan Bonardo Silalahi
-NPM          : 140810240058
-Bagian       : Daftar nilai mahasiswa tanpa ada waktu ujian
-Tanggal Buat : 5 Desember 2024
-Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct)
-
-Nama         : Noell Valentino Timothy
-NPM          : 140810240064
-Bagian       : Daftar nilai mahasiswa dengan waktu ujian
-Tanggal Buat : 5 Desember 2024
-Deskripsi    : Menyimpan data mahasiswa dengan menggunakan array of data (struct), ditambah dengan waktu ujian mahasiswa dan menunya.
-*/
-
 #include <iostream>
 #include <ios>
 #include <iomanip>
 #include <fstream>
-#include <sstream>
+
 using namespace std;
 
-struct Mahasiswa{
-    string npm;
-    string nama;
+struct mahasiswa{
+    char npm[10];
+    char nama[50];
     float NilaiPenguji1;
     float NilaiPenguji2;
     float NilaiPenguji3;
 };
 
-typedef Mahasiswa larikMahasiswa[10];
-larikMahasiswa mhs;
-
-void Banyak(int & n){
-    cout<<"Banyak Data: ";cin>>n;
-}
-
-void inputData(string nFile, larikMahasiswa& mhs,int n){
-    ofstream fo;
-    fo.open(nFile, ios::binary | ios::app);
-    for (int i = 0; i < n; i++)
-    {
-        cout<<"\nData Mahasiswa ke-"<<i+1<<": "<<endl;
-        cout<<"NPM: ";cin>>mhs[i].npm;
-        cout<<"Nama: ";cin.ignore();getline(cin,mhs[i].nama);
-        do {
-            cout << "Nilai Penguji 1: ";
-            cin >> mhs[i].NilaiPenguji1;
-        } while (mhs[i].NilaiPenguji1 < 0 || mhs[i].NilaiPenguji1 > 100);
-        do {
-            cout << "Nilai Penguji 2: ";
-            cin >> mhs[i].NilaiPenguji2;
-        } while (mhs[i].NilaiPenguji2 < 0 || mhs[i].NilaiPenguji2 > 100);
-        do {
-            cout << "Nilai Penguji 3: ";
-            cin >> mhs[i].NilaiPenguji3;
-        } while (mhs[i].NilaiPenguji3 < 0 || mhs[i].NilaiPenguji3 > 100);
-        fo.write((char *) &mhs[i], sizeof(mhs[i]));
-    }
-    
-}
-
-float NilaiAkhir(Mahasiswa mhs){
-    return(mhs.NilaiPenguji1+mhs.NilaiPenguji2+mhs.NilaiPenguji3)/3.0;
-}
-
-float rataRataNilaiAkhir(larikMahasiswa mhs, int n) {
-    float total = 0;
-    for (int i = 0; i < n; i++) {
-        total += NilaiAkhir(mhs[i]);
-    }
-    return total / n;
-}
-
-float NilaiTinggi(larikMahasiswa mhs,int n){
-    float NilaiMax=NilaiAkhir(mhs[0]);
-    for (int i = 1; i < n; i++)
-    {
-        float Nakhir=NilaiAkhir(mhs[i]);
-        if(NilaiMax<Nakhir){
-            NilaiMax=Nakhir;
-        }
-    }
-    return NilaiMax;
-}
-
-float NilaiRendah(larikMahasiswa mhs,int n){
-    float NilaiMin=NilaiAkhir(mhs[0]);
-    for (int i = 1; i < n; i++)
-    {
-        float Nakhir=NilaiAkhir(mhs[i]);
-        if(NilaiMin>Nakhir){
-            NilaiMin=Nakhir;
-        }
-    }
-    return NilaiMin;
-}
-
-char HurufMutu(float Nilai){
+char hurufMutu(float Nilai){
     char Mutu;
     if(Nilai>=0&&Nilai<55){
         Mutu='D';
@@ -118,77 +30,154 @@ char HurufMutu(float Nilai){
     return Mutu;
 }
 
-string statusMhs(float Nilai){
+bool statusMhs(float Nilai){
     if (Nilai >= 68 && Nilai <= 100) {
-        return "Lulus";
+        return 1;
     } else {
-        return "Gagal";
+        return 0;
     }
 
 }
 
-string daftarTabel(larikMahasiswa mhs,int n){
-    ostringstream output;
-    output << "Daftar Nilai Sidang Program Studi TI" << endl;
-    output <<"--------------------------------------------------------------------------------------------------------"<<endl;
-    output << "No" << setw(10) 
+float countNilaiAkhir(int nilai1, int nilai2, int nilai3){
+    float totalNilai = 0;
+        totalNilai += nilai1+nilai2+nilai3;
+    return(totalNilai)/3.0;
+}
+
+void cetakTabel(mahasiswa mhs){
+    int i = 0;
+    char mutu;
+    float nilaiAkhir;
+    bool status;
+    ifstream fi;
+    fi.open("Tugas5.dat", ios::binary);
+    int j = 1;
+    cout << "Daftar Nilai Sidang Program Studi TI" << endl;
+    cout <<"--------------------------------------------------------------------------------------------------------"<<endl;
+    cout << "No" << setw(10) 
     << "NPM" << setw(13) 
-    << "Nama" <<setw(10)
+    << "Nama" << setw(10)
     << "Nilai 1"<< setw(10)
     << "Nilai 2" << setw(10)
     << "Nilai 3" << setw(15)
     << "Nilai Akhir" << setw(15)
     << "Huruf Mutu" << setw(10)
     << "Status" << endl;
-    output <<"--------------------------------------------------------------------------------------------------------"<<endl;
-    for (int i = 0; i <n; i++)
-    {
-        float NilaiAkhir1=NilaiAkhir(mhs[i]);
-        char Mutu=HurufMutu(NilaiAkhir1);
-        string Stat =statusMhs(NilaiAkhir1);
-        output << i+1 << setw(11)
-        << mhs[i].npm << setw(13)
-        << mhs[i].nama << setw(10)
-        << mhs[i].NilaiPenguji1 << setw(10)
-        << mhs[i].NilaiPenguji2 << setw(10)
-        << mhs[i].NilaiPenguji3 << setw(15)
-        << NilaiAkhir1 << setw(15)
-        << Mutu << setw(10)
-        << Stat << endl;
+    while(fi.read((char *) &mhs, sizeof(mhs))){
+        nilaiAkhir = countNilaiAkhir(mhs.NilaiPenguji1, mhs.NilaiPenguji2, mhs.NilaiPenguji3);
+        mutu = hurufMutu (nilaiAkhir);
+        status = statusMhs (nilaiAkhir);
+        cout << j++ << setw(11)
+        << mhs.npm << setw(13)
+        << mhs.nama << setw(10)
+        << mhs.NilaiPenguji1 << setw(10)
+        << mhs.NilaiPenguji2 << setw(10)
+        << mhs.NilaiPenguji3 << setw(15)
+        << nilaiAkhir << setw(15)
+        << mutu << setw(10);
+        if (status){        
+            cout << "Lulus";
+        }
+        else {
+            cout << "Gagal";
+        }
+        cout << endl;
     }
-    output <<"--------------------------------------------------------------------------------------------------------"<<endl;
-    return output.str(); 
+    cout <<"--------------------------------------------------------------------------------------------------------"<<endl;
+    fi.close();
 }
 
-void outputFile (string nFile, larikMahasiswa mhs, int n, float rata, float tinggi, float rendah){
+float rataRata (mahasiswa mhs){
+    float totalNilai;
+    int i = 0;
     ifstream fi;
-    Mahasiswa m;
-    int i=0;
-    fi.open (nFile, ios::binary);    
-    while (fi.read((char *) &m, sizeof(m))){    
-        mhs[i] = m;
-        cout << daftarTabel(mhs, n) << endl;
-        cout << "Rata-rata nilai: " << rata << endl;
-        cout << "Nilai tertinggi: " << tinggi << endl;
-        cout << "Nilai terendah: " << rendah;
+    fi.open ("Tugas5.dat", ios::binary);
+    while(fi.read((char *) &mhs, sizeof(mhs))){
+        totalNilai += countNilaiAkhir(mhs.NilaiPenguji1, mhs.NilaiPenguji2, mhs.NilaiPenguji3);
         i++;
     }
-    fi.close();
-
+    return (totalNilai /= i);
 }
 
-int main(int argc, char const *argv[])
-{
-    larikMahasiswa mhs;
+float nilaiTinggi(mahasiswa mhs){
+    float temp;
+    float nilaiMaks = 0;
+    ifstream fi;
+    fi.open ("Tugas5.dat", ios::binary);
+    while(fi.read((char *) &mhs, sizeof(mhs))){
+        temp = countNilaiAkhir(mhs.NilaiPenguji1, mhs.NilaiPenguji2, mhs.NilaiPenguji3);
+        if (temp > nilaiMaks){
+            nilaiMaks = temp;
+        }
+    }
+    return nilaiMaks;
+}
+
+float nilaiRendah(mahasiswa mhs){
+    float temp;
+    float nilaiMin = 100;
+    ifstream fi;
+    fi.open ("Tugas5.dat", ios::binary);
+    while(fi.read((char *) &mhs, sizeof(mhs))){
+        temp = countNilaiAkhir(mhs.NilaiPenguji1, mhs.NilaiPenguji2, mhs.NilaiPenguji3);
+        if (temp < nilaiMin){
+            nilaiMin = temp;
+        }
+    }
+    return nilaiMin;
+}
+
+void outputAkhir(mahasiswa mhs) {
+    int pilihan = 0;
+    cout << "\nPilih output yang diinginkan:\n";
+    cout << "1. Tabel\n";
+    cout << "2. Rata-rata nilai\n";
+    cout << "3. Nilai tertinggi\n";
+    cout << "4. Nilai terendah\n";
+    cout << "5. Keluar dari program\n";
+    cout << "Masukkan pilihan: ";
+    do {
+        cin >> pilihan;
+    } while (pilihan < 1 || pilihan > 5);
+
+    switch (pilihan)
+    {
+    case 1: cout << "\n"; cetakTabel(mhs); outputAkhir(mhs);
+    case 2: cout << "\nRata-rata : " << rataRata(mhs) << "\n"; outputAkhir(mhs);
+    case 3: cout << "\nNilai Tertinggi : " << nilaiTinggi(mhs) << "\n"; outputAkhir(mhs);
+    case 4: cout << "\nNilai Terendah  : " << nilaiRendah(mhs) << "\n"; outputAkhir(mhs);
+    case 5: exit(0);
+    default: break;
+    }    
+}
+
+int main(){
+    ifstream fi;
+    ofstream fo;
+    mahasiswa mhs;
     int n;
-    string nFile;
-    cout << "Masukkan nama file yang akan dioutput: "; cin >> nFile;
-    Banyak(n);
-    inputData(nFile, mhs, n);
-    cout << endl;
-    float rata=rataRataNilaiAkhir(mhs,n);
-    float Tertinggi=NilaiTinggi(mhs,n);
-    float Terendah=NilaiRendah(mhs,n);
-    outputFile(nFile,mhs,n,rata,Tertinggi,Terendah);
-    return 0;
+    cout << "Masukkan jumlah mahasiswa: "; cin >> n;
+    fo.open("Tugas5.dat", ios::binary | ios::app);
+    for(int i = 0; i<n; i++){
+        cout << "\nMahasiswa " << i+1;
+        cout << "\nNIM: "; cin >> mhs.npm;
+        cout << "Nama: "; cin >> mhs.nama;
+        do {
+            cout << "Nilai Penguji 1: ";
+            cin >> mhs.NilaiPenguji1;
+        } while (mhs.NilaiPenguji1 < 0 || mhs.NilaiPenguji1 > 100);
+        do {
+            cout << "Nilai Penguji 2: ";
+            cin >> mhs.NilaiPenguji2;
+        } while (mhs.NilaiPenguji2 < 0 || mhs.NilaiPenguji2 > 100);
+        do {
+            cout << "Nilai Penguji 3: ";
+            cin >> mhs.NilaiPenguji3;
+        } while (mhs.NilaiPenguji3 < 0 || mhs.NilaiPenguji3 > 100);
+        
+        fo.write((char *) &mhs, sizeof(mhs));
+    }
+    fo.close();
+    outputAkhir (mhs);
 }
