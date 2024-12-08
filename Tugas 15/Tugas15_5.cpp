@@ -174,7 +174,7 @@ int main(){
         do {
             cout << "Nilai Penguji 3: ";
             cin >> mhs.NilaiPenguji3;
-        } while (mhs.NilaiPenguji3 < 0 || mhs.NilaiPenguji3 > 100);;
+        } while (mhs.NilaiPenguji3 < 0 || mhs.NilaiPenguji3 > 100);
         
         fo.write((char *) &mhs, sizeof(mhs));
     }
