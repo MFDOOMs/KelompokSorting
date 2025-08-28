@@ -98,8 +98,10 @@ void cetakTabel(mahasiswa mhs){
     char mutu;
     float nilaiAkhir;
     bool status;
+
     ifstream fi;
     fi.open("Tugas5.dat", ios::binary);
+    
     int j = 1;
     cout << "Daftar Nilai Sidang Program Studi TI" << endl;
     cout <<"--------------------------------------------------------------------------------------------------------"<<endl;

@@ -19,11 +19,9 @@ Tanggal Buat : 8 Desember 2024
 #include <fstream>
 using namespace std;
 
-typedef char larik[100];
 
 void enkripsi (string inFile, int geser){
     char karakter;
-    larik encript;
 
     ifstream fi;
     fi.open (inFile);
