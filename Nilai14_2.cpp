@@ -261,6 +261,4 @@ int main(int argc, char const *argv[])
     inputData(mhs,n);
     cout << endl;
     outputAkhir(mhs, n);
-    
-    return 0;
 }
